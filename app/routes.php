@@ -28,14 +28,10 @@ Route::post("api/users/create", [
     "uses" => "api_UserController@create"
 ]);
 
-//user login
-Route::post("api/users/login", [
-    "uses" => "api_UserController@login"
-]);
-
-//user logout
-Route::get("api/users/logout", [
-    "uses" => "api_UserController@logout"
+//create a new product review
+Route::get("api/users/auth", [
+    "before" => "auth.api",
+    "uses" => "api_UserController@auth"
 ]);
 
 

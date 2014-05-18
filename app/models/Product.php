@@ -104,17 +104,41 @@ class Product extends Eloquent {
 		//start the query
 		$query = Product::query();
 
-		//loop through conditions, build query
-		foreach($conditions as $key => $value){
+		//if name and brand are equal, use advanced where clause (handles iPhone search calls)
+		if(Input::get('name') == Input::get('brand')){
 
-			//list products by name (accepts partial values)
-			if($key == "name" || $key == "brand"){
-				$searchTerm = "%" . $value . "%";
-				$query->where($key,'LIKE',$searchTerm);
-			}
-			//list products by criteria (rating, category)
-			else{
-				$query->where($key,$value);
+			$searchTerm = "%" . Input::get('name') . "%";
+
+			$query->orWhere(function($query) use ($searchTerm){
+			    
+			    $query->orWhere('name','LIKE',$searchTerm);
+                $query->orWhere('brand','LIKE',$searchTerm);
+
+			});
+			
+            foreach($conditions as $key => $value){
+
+            	if($key != "name" && $key != "brand"){
+            		$query->where($key,$value);
+            	}
+            }
+            
+		}
+		//else, build standard query (handles web app calls)
+		else{
+
+			//loop through conditions, build query
+			foreach($conditions as $key => $value){
+
+				//list products by name (accepts partial values)
+				if($key == "name" || $key == "brand"){
+					$searchTerm = "%" . $value . "%";
+					$query->where($key,'LIKE',$searchTerm);
+				}
+				//list products by criteria (rating, category)
+				else{
+					$query->where($key,$value);
+				}
 			}
 		}
 

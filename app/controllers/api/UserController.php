@@ -42,4 +42,20 @@ class api_UserController extends BaseController {
 	}
 
 
+	/*
+	|--------------------------------------------------------------------------
+	| GET
+	|--------------------------------------------------------------------------
+	*/
+
+	/**
+	 * Test user credentials.
+	 *
+	 * @return Response
+	 */
+	public function auth()
+	{
+		return Response::json(array('success'=>'User credentials are valid.'), 200);	
+	}
+
 }

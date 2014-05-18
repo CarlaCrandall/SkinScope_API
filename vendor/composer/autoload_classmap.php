@@ -1460,7 +1460,7 @@ return array(
     'Symfony\\Component\\Translation\\TranslatorInterface' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/TranslatorInterface.php',
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
-    'UpdateProductTable' => $baseDir . '/app/database/migrations/2014_04_08_002019_UpdateProductTable.php',
+    'UpdateProductTable' => $baseDir . '/app/database/migrations/2014_05_09_213418_updateproducttable.php',
     'UpdateUserTable' => $baseDir . '/app/database/migrations/2014_03_31_153338_UpdateUserTable.php',
     'User' => $baseDir . '/app/models/User.php',
     'Way\\Generators\\Cache' => $vendorDir . '/way/generators/src/Way/Generators/Cache.php',
